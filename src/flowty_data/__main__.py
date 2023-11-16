@@ -2,12 +2,14 @@ import sys
 import argparse
 
 from flowty_data.mcf import convert_planargrid
+from flowty_data.linerlib import convert_linerlib
 
 
 def main():
     argv = sys.argv[1:]
     # argv.append("--type")
     # argv.append("mcf")
+    # argv.append("linerlib")
 
     parser = argparse.ArgumentParser(
         description="Converts instance data to Flowty format"
@@ -17,6 +19,8 @@ def main():
 
     if args.type == "mcf":
         return convert_planargrid.convert()
+    if args.type == "linerlib":
+        return convert_linerlib.convert()
 
     raise TypeError("Unknown instance type")
 

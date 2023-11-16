@@ -1,0 +1,113 @@
+c resource constrained multi commodity flow
+c
+c linerlib_networkname Baltic_best_high_32766_3
+c transhipmenttype complete
+c
+c id type|name
+c 0 R0_DEBRV
+c 1 R0_RULED
+c 2 R0_SEGOT
+c 3 R1_DEBRV
+c 4 R1_DKAAR
+c 5 R1_FIKTK
+c 6 R1_FIRAU
+c 7 R1_RULED
+c 8 R2_DEBRV
+c 9 R2_NOBGO
+c 10 R2_NOSVG
+c 11 R2_PLGDY
+c 12 R2_RUKGD
+c 13 O_DEBRV
+c 14 O_SEGOT
+c 15 O_FIRAU
+c 16 O_NOBGO
+c 17 O_DKAAR
+c 18 O_NOSVG
+c 19 O_FIKTK
+c 20 O_PLGDY
+c 21 O_RULED
+c 22 O_RUKGD
+c 23 D_FIRAU
+c 24 D_FIKTK
+c 25 D_RUKGD
+c 26 D_SEGOT
+c 27 D_NOBGO
+c 28 D_DEBRV
+c 29 D_RULED
+c 30 D_NOSVG
+c 31 D_DKAAR
+c 32 D_PLGDY
+c
+c problem vertices edges commodities resources
+p rcmcf 33 49 18 1
+c
+c origin destination demand resource_limits
+k 15 28 77 1600
+k 13 31 456 1300
+k 13 30 65 1400
+k 22 28 7 3100
+k 13 32 98 1000
+k 14 28 660 1000
+k 13 27 17 3000
+k 13 25 268 1200
+k 13 23 18 1700
+k 16 28 37 2000
+k 13 24 187 2100
+k 20 28 231 900
+k 13 26 597 1100
+k 18 28 32 2200
+k 19 28 162 2000
+k 17 28 397 1100
+k 13 29 1215 1000
+k 21 28 298 700
+c
+c source target cost capacity resource_consumptions
+a 1 0 0 1600 382
+a 0 2 0 1600 118
+a 2 0 0 1600 118
+a 0 1 0 1600 382
+a 5 7 0 1350 45
+a 7 6 0 1350 246
+a 6 3 0 1350 423
+a 3 4 0 1350 178
+a 4 3 0 1350 178
+a 3 5 0 1350 429
+a 9 10 0 900 46
+a 10 8 0 900 152
+a 8 12 0 900 347
+a 12 11 0 900 29
+a 11 9 0 900 311
+a 0 3 121 4822 300
+a 0 8 121 4822 300
+a 3 0 121 4822 300
+a 3 8 121 4822 300
+a 8 0 121 4822 300
+a 8 3 121 4822 300
+a 1 7 2 4822 300
+a 7 1 2 4822 300
+a 13 0 0 4822 100
+a 13 3 0 4822 100
+a 13 8 0 4822 100
+a 14 2 0 4822 100
+a 15 6 0 4822 100
+a 16 9 0 4822 100
+a 17 4 0 4822 100
+a 18 10 0 4822 100
+a 19 5 0 4822 100
+a 20 11 0 4822 100
+a 21 1 0 4822 100
+a 21 7 0 4822 100
+a 22 12 0 4822 100
+a 6 23 0 4822 100
+a 5 24 0 4822 100
+a 12 25 0 4822 100
+a 2 26 0 4822 100
+a 9 27 0 4822 100
+a 0 28 0 4822 100
+a 3 28 0 4822 100
+a 8 28 0 4822 100
+a 1 29 0 4822 100
+a 7 29 0 4822 100
+a 10 30 0 4822 100
+a 4 31 0 4822 100
+a 11 32 0 4822 100
