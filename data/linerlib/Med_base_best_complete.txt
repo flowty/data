@@ -1,5 +1,5 @@
 c resource constrained multi commodity flow
-c
+c Mediterranean
 c linerlib_networkname Med_base_best
 c transhipmenttype complete
 c

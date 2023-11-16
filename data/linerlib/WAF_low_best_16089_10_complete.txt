@@ -1,5 +1,5 @@
 c resource constrained multi commodity flow
-c
+c WAF
 c linerlib_networkname WAF_low_best_16089_10
 c transhipmenttype complete
 c

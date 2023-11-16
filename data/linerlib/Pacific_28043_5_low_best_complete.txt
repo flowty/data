@@ -1,5 +1,5 @@
 c resource constrained multi commodity flow
-c
+c Pacific
 c linerlib_networkname Pacific_28043_5_low_best
 c transhipmenttype complete
 c

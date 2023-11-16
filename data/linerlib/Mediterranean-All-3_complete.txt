@@ -1,5 +1,5 @@
 c resource constrained multi commodity flow
-c
+c Mediterranean
 c linerlib_networkname Mediterranean-All-3
 c transhipmenttype complete
 c

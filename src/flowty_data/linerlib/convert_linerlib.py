@@ -13,6 +13,7 @@ class TranshipmentType(str, enum.Enum):
 
 
 def _convert(data, network, transhipmentType, out):
+    instanceName, _, _, _, _, _ = data
     networkName, _, _, _ = network
     builder = fetch_linerlib.GraphBuilder(data, network)
     scale = 100
@@ -51,7 +52,7 @@ def _convert(data, network, transhipmentType, out):
     numE = len(E)
     lines = [
         "c resource constrained multi commodity flow\n",
-        "c\n",
+        f"c {instanceName}\n",
         f"c linerlib_networkname {networkName}\n",
         f"c transhipmenttype {transhipmentType}\n",
         "c\n",

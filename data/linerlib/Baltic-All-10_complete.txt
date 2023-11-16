@@ -1,5 +1,5 @@
 c resource constrained multi commodity flow
-c
+c Baltic
 c linerlib_networkname Baltic-All-10
 c transhipmenttype complete
 c

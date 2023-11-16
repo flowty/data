@@ -1,5 +1,5 @@
 c resource constrained multi commodity flow
-c
+c WorldSmall
 c linerlib_networkname WorldSmall_pid_4953_15_best_low
 c transhipmenttype complete
 c

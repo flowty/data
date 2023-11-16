@@ -1,5 +1,5 @@
 c resource constrained multi commodity flow
-c
+c WorldLarge
 c linerlib_networkname WorldLarge-All-5
 c transhipmenttype complete
 c
