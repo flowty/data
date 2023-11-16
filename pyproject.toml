@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flowty-data"
+authors = [
+  { name="Flowty", email="info@flowty.ai" },
+]
+description = "Flowty Network Optimization Solver"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+classifiers = [
+        "License :: Other/Proprietary License",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+]
+keywords=[
+    "Optimization",
+    "Nework Optimization",
+    "Combinatorial Optimization",
+    "Linear Programming",
+    "Integer Programming",
+    "Operations Research",
+    "Mathematical Programming",
+]
+dynamic = ["version"]
+
+[project.scripts]
+flowty_convert = "flowty_data:main"
+
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.urls]
+Homepage = "https://flowty.ai"
+repository = "https://github.com/flowty/data"
+"Bug Tracker" = "https://github.com/flowty/data/issues"
