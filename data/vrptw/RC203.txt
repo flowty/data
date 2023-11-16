@@ -1,5 +1,5 @@
 c vehicle routing problem with time windows
-c solomon RC203 
+c solomon RC203
 c
 c problem vertices edges capacity
 p vrptw 102 10100 1000

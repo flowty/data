@@ -24,7 +24,7 @@ def _read(instance, dir):
     downloadDir = dir if dir else tempfile.gettempdir()
     filename = os.path.join(downloadDir, instance)
     with open(filename, "r") as f:
-        name = f.readline().strip("\n")
+        name = f.readline().strip("\n").strip()
         _skipLines(f, 3)
         line = f.readline()
         _, q = (int(val) for val in line.split())
