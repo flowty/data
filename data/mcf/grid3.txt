@@ -1,4 +1,5 @@
 c multi commodity flow
+c grid3
 c
 c problem vertices edges commodities
 p mcf 100 360 50

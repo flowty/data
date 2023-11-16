@@ -10,7 +10,7 @@ def _convert(dataSet, out):
         name, n, m, k, E, C, U, O, D, B = data
         lines = [
             "c multi commodity flow\n",
-            "c\n",
+            f"c {name}\n" "c\n",
             "c problem vertices edges commodities\n",
             f"p mcf {n} {m} {k}\n",
             "c\n",
@@ -20,10 +20,7 @@ def _convert(dataSet, out):
             lines += [f"k {o} {d} {b}\n"]
         lines += ["c\n", "c source target cost capacity\n"]
         for (s, t), c, u in zip(E, C, U):
-            line = f"a {s} {t}"
-            line += f" {c}"
-            line += f" {u}"
-            lines += [line + "\n"]
+            lines += [f"a {s} {t} {c} {u}\n"]
 
         filename = os.path.join(out, f"{name}.txt")
         with open(filename, "w") as f:

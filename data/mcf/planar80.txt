@@ -1,4 +1,5 @@
 c multi commodity flow
+c planar80
 c
 c problem vertices edges commodities
 p mcf 80 440 543

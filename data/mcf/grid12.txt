@@ -1,4 +1,5 @@
 c multi commodity flow
+c grid12
 c
 c problem vertices edges commodities
 p mcf 900 3480 6000
