@@ -57,8 +57,8 @@ def convert():
     os.makedirs(downloadDir, exist_ok=True)
     if args.all:
         for instance in instances:
-            dataSet = fetch(instance, None, dir=downloadDir)
+            dataSet = fetch(instance, dir=downloadDir)
             _convert(dataSet, args.out)
     else:
-        dataSet = fetch(args.instance, None)
+        dataSet = fetch(args.instance, dir=downloadDir)
         _convert(dataSet, args.out)

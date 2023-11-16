@@ -1,37 +1,16 @@
 import os
-import urllib.request
-import tarfile
-import shutil
 import tempfile
+import flowty_data.fetch
 
 
-def _download(instance, num, dir):
+def _download(instance, dir):
     instance_lookup = {
         "planar": "planar.tgz",
         "grid": "grid.tgz",
     }
-    downloadDir = dir if dir else tempfile.gettempdir()
-    filename = os.path.join(downloadDir, instance_lookup[instance])
-    if not os.path.exists(filename):
-        url = (
-            f"http://groups.di.unipi.it/optimize/Data/MMCF/{instance_lookup[instance]}"
-        )
-        headers = {"Accept": "application/zip"}
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req) as response:
-            with open(filename, "wb") as out_file:
-                shutil.copyfileobj(response, out_file)
-    instanceName = instance + str(num) if num else None
-    with tarfile.open(filename, "r") as tf:
-        if not instanceName:
-            tf.extractall(downloadDir)
-            return
-        for member in tf.getmembers():
-            if member.name == instanceName:
-                if not os.path.exists(os.path.join(downloadDir, instanceName)):
-                    tf.extract(member, downloadDir)
-                return
-        raise TypeError(f"{num} not in {instance} data set")
+    filename = instance_lookup[instance]
+    url = f"http://groups.di.unipi.it/optimize/Data/MMCF/{instance_lookup[instance]}"
+    flowty_data.fetch.fetch_tgz(filename, url, dir)
 
 
 def _read(instance, num, dir):
@@ -78,11 +57,8 @@ def _readAll(instance, dir):
     return data
 
 
-def fetch(instance, num, dir=None):
+def fetch(instance, dir=None):
     if dir and not os.path.exists(dir):
         raise FileExistsError(f"No such dir {dir}")
-
-    _download(instance, num, dir)
-    if num:
-        return _read(instance, num, dir)
+    _download(instance, dir)
     return _readAll(instance, dir)
