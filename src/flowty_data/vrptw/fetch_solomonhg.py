@@ -23,6 +23,7 @@ def _skipLines(file, num):
 def _read(instance, dir):
     downloadDir = dir if dir else tempfile.gettempdir()
     filename = os.path.join(downloadDir, instance)
+    scale = 10
     with open(filename, "r") as f:
         name = f.readline().strip("\n").strip()
         _skipLines(f, 3)
@@ -49,9 +50,9 @@ def _read(instance, dir):
         X.append(X[0])
         Y.append(Y[0])
         D.append(D[0])
-        A.append(A[0])
-        B.append(B[0])
-        S.append(S[0])
+        A.append(A[0] * scale)
+        B.append(B[0] * scale)
+        S.append(S[0] * scale)
 
         E = []
         C = []
@@ -61,12 +62,9 @@ def _read(instance, dir):
             for j in range(1, n):
                 if j <= i or (i == 0 and j == n - 1):
                     continue
-                value = (
-                    int(
-                        math.sqrt(math.pow(X[i] - X[j], 2) + math.pow(Y[i] - Y[j], 2))
-                        * 10
-                    )
-                    / 10
+                value = int(
+                    math.sqrt(math.pow(X[i] - X[j], 2) + math.pow(Y[i] - Y[j], 2))
+                    * scale
                 )
                 C.append(value)
                 T.append(value + S[i])
