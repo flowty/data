@@ -1,7 +1,7 @@
 import os
 import tempfile
 
-import flowty_data.linerlib.fetch_repo as fetch_repo
+import flowty_data.rcmcf.fetch_repo as fetch_repo
 
 
 def _download(dir):

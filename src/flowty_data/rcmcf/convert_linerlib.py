@@ -3,8 +3,8 @@ import argparse
 import enum
 import os
 import tempfile
-import flowty_data.linerlib.fetch_linerlib as fetch_linerlib
-import flowty_data.linerlib.fetch_flow_first_paper as fetch_flow_first_paper
+import flowty_data.rcmcf.fetch_linerlib as fetch_linerlib
+import flowty_data.rcmcf.fetch_flow_first_paper as fetch_flow_first_paper
 
 
 class TranshipmentType(str, enum.Enum):
@@ -94,7 +94,7 @@ def convert():
     # argv.append("/tmp/LINERLIB")
     # argv.append("/tmp/flow-first-route-next-heuristic-shipping-network-design")
     argv.append("--out")
-    argv.append("data/linerlib")
+    argv.append("data/rcmcf")
     argv.append("--all")
 
     parser = argparse.ArgumentParser(description="Converts linerlib data to rcmcf")

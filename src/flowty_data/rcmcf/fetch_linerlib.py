@@ -5,7 +5,7 @@ import csv
 import io
 from typing import Dict, Any, Tuple, List
 
-import flowty_data.linerlib.fetch_repo as fetch_repo
+import flowty_data.rcmcf.fetch_repo as fetch_repo
 
 
 def _download(dir):
@@ -173,8 +173,8 @@ class GraphBuilder:
         self.origins = self._originNodes()
         self.destinations = self._destinationNodes()
         self.vertices = self._portCallNodes()
-        self.vertices += set(self.origins)
-        self.vertices += set(self.destinations)
+        self.vertices += sorted(set(self.origins))
+        self.vertices += sorted(set(self.destinations))
         self.edges = self._voyageEdges()
         self.edges += self._transhipmentEdges()
         self.edges += self._loadEdges()

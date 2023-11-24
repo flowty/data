@@ -2,15 +2,15 @@ import sys
 import argparse
 
 from flowty_data.mcf import convert_planargrid
-from flowty_data.linerlib import convert_linerlib
+from flowty_data.rcmcf import convert_linerlib
 from flowty_data.vrptw import convert_solomonhg
 
 
 def main():
     argv = sys.argv[1:]
-    # argv.append("--type")
+    argv.append("--type")
     # argv.append("mcf")
-    # argv.append("linerlib")
+    argv.append("rcmcf")
     # argv.append("vrptw")
 
     parser = argparse.ArgumentParser(
@@ -21,7 +21,7 @@ def main():
 
     if args.type == "mcf":
         return convert_planargrid.convert()
-    if args.type == "linerlib":
+    if args.type == "rcmcf":
         return convert_linerlib.convert()
     if args.type == "vrptw":
         return convert_solomonhg.convert()
