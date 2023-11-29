@@ -1,0 +1,25 @@
+grid1	827319
+grid2	1705378
+grid3	1524642
+grid4	3031695
+grid5	5049689
+grid6
+grid7
+grid8
+grid9
+grid10
+grid11
+grid12
+grid13
+grid14
+grid15
+planar30	44350624
+planar50	122199689
+planar80	182438134
+planar100	231339582
+planar150
+planar300
+planar500
+planar800
+planar1000
+planar2500
