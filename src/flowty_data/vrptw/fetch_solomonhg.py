@@ -42,17 +42,17 @@ def _read(instance, dir):
             X.append(x)
             Y.append(y)
             D.append(d)
-            A.append(a)
-            B.append(b)
-            S.append(s)
+            A.append(a * scale)
+            B.append(b * scale)
+            S.append(s * scale)
             line = f.readline()
         # Clone depot
         X.append(X[0])
         Y.append(Y[0])
         D.append(D[0])
-        A.append(A[0] * scale)
-        B.append(B[0] * scale)
-        S.append(S[0] * scale)
+        A.append(A[0])
+        B.append(B[0])
+        S.append(S[0])
 
         E = []
         C = []
@@ -87,7 +87,7 @@ def _readAll(instance, dir):
     downloadDir = os.path.join(downloadDir, instance_lookup[instance])
     data = []
     for filename in os.listdir(downloadDir):
-        if filename.endswith(".sol"):
+        if filename.endswith(".sol") or filename == "results.txt":
             continue
         data.append(_read(filename, downloadDir))
     return data
