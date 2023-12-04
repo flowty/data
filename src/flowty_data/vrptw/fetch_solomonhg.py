@@ -53,14 +53,13 @@ def _read(instance, dir):
         A.append(A[0])
         B.append(B[0])
         S.append(S[0])
-
         E = []
         C = []
         T = []
         n = len(X)
         for i in range(n - 1):
             for j in range(1, n):
-                if j <= i or (i == 0 and j == n - 1):
+                if (i == 0 and j == n - 1) or i == j:
                     continue
                 value = int(
                     math.sqrt(math.pow(X[i] - X[j], 2) + math.pow(Y[i] - Y[j], 2))
@@ -69,12 +68,7 @@ def _read(instance, dir):
                 C.append(value)
                 T.append(value + S[i])
                 E.append((i, j))
-                if i != 0 and j != n - 1:
-                    C.append(value)
-                    T.append(value + S[j])
-                    E.append((j, i))
         m = len(E)
-
     return name, n, m, E, C, D, q, T, A, B, X, Y
 
 
