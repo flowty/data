@@ -5,9 +5,11 @@ import os
 from flowty_data.vrptw.fetch_solomonhg import fetch
 
 
-def _convert(instance, dataSet, out):
+def _convert(instance, dataSet, out, numCustomers=None):
     for data in dataSet:
         name, n, m, E, C, D, q, T, A, B, X, Y = data
+        if numCustomers:
+            name = f"{name}_{numCustomers}"
         lines = [
             "c vehicle routing problem with time windows\n",
             f"c {instance} {name}\n",
@@ -52,11 +54,12 @@ def convert():
 
     instances = ["solomon", "homberger"]
     downloadDir = "data/vrptw/pucrio"
+    numCustomers = None
     os.makedirs(downloadDir, exist_ok=True)
     if args.all:
         for instance in instances:
-            dataSet = fetch(instance, dir=downloadDir)
-            _convert(instance, dataSet, args.out)
+            dataSet = fetch(instance, dir=downloadDir, numCustomers=numCustomers)
+            _convert(instance, dataSet, args.out, numCustomers=numCustomers)
     else:
-        dataSet = fetch(args.instance, dir=downloadDir)
-        _convert(dataSet, args.out)
+        dataSet = fetch(args.instance, dir=downloadDir, numCustomers=numCustomers)
+        _convert(dataSet, args.out, numCustomers=numCustomers)

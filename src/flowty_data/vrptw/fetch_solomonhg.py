@@ -20,7 +20,7 @@ def _skipLines(file, num):
         file.readline()
 
 
-def _read(instance, dir):
+def _read(instance, dir, numCustomers=None):
     downloadDir = dir if dir else tempfile.gettempdir()
     filename = os.path.join(downloadDir, instance)
     scale = 10
@@ -46,6 +46,13 @@ def _read(instance, dir):
             B.append(b * scale)
             S.append(s * scale)
             line = f.readline()
+        if numCustomers:
+            X = X[: numCustomers + 1]
+            Y = Y[: numCustomers + 1]
+            D = D[: numCustomers + 1]
+            A = A[: numCustomers + 1]
+            B = B[: numCustomers + 1]
+            S = S[: numCustomers + 1]
         # Clone depot
         X.append(X[0])
         Y.append(Y[0])
@@ -72,7 +79,7 @@ def _read(instance, dir):
     return name, n, m, E, C, D, q, T, A, B, X, Y
 
 
-def _readAll(instance, dir):
+def _readAll(instance, dir, numCustomers=None):
     instance_lookup = {
         "solomon": "Vrp-Set-Solomon",
         "homberger": "Vrp-Set-HG/Vrp-Set-HG",
@@ -83,12 +90,12 @@ def _readAll(instance, dir):
     for filename in os.listdir(downloadDir):
         if filename.endswith(".sol") or filename == "results.txt":
             continue
-        data.append(_read(filename, downloadDir))
+        data.append(_read(filename, downloadDir, numCustomers))
     return data
 
 
-def fetch(instance, dir=None):
+def fetch(instance, dir=None, numCustomers=None):
     if dir and not os.path.exists(dir):
         raise FileExistsError(f"No such dir {dir}")
     _download(instance, dir)
-    return _readAll(instance, dir)
+    return _readAll(instance, dir, numCustomers)
