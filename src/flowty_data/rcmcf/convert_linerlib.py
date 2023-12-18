@@ -7,12 +7,7 @@ import flowty_data.rcmcf.fetch_linerlib as fetch_linerlib
 import flowty_data.rcmcf.fetch_flow_first_paper as fetch_flow_first_paper
 
 
-class TranshipmentType(str, enum.Enum):
-    Complete = "complete"
-    Star = "star"
-
-
-def _convert(data, network, transhipmentType, out):
+def _convert(data, network, out):
     instanceName, _, _, _, _, _ = data
     networkName, _, _, _ = network
     builder = fetch_linerlib.GraphBuilder(data, network)
@@ -54,7 +49,6 @@ def _convert(data, network, transhipmentType, out):
         "c resource constrained multi commodity flow\n",
         f"c {instanceName}\n",
         f"c linerlib_networkname {networkName}\n",
-        f"c transhipmenttype {transhipmentType}\n",
         "c\n",
         "c id type|name\n",
     ]
@@ -77,7 +71,7 @@ def _convert(data, network, transhipmentType, out):
         line += f" {times[i]}"
         lines += [line + "\n"]
 
-    filename = os.path.join(out, f"{networkName}_{transhipmentType}.txt")
+    filename = os.path.join(out, f"{networkName}.txt")
     with open(filename, "w") as f:
         f.writelines(lines)
 
@@ -101,13 +95,6 @@ def convert():
     parser.add_argument("--type", help="Converts linerlib data to Flowty format")
     parser.add_argument("--instance", help="instance name")
     parser.add_argument("--network", help="network name")
-    parser.add_argument(
-        "--transhipment",
-        type=TranshipmentType,
-        choices=list(TranshipmentType),
-        help="type of transhipment",
-        default=TranshipmentType.Complete,
-    )
     parser.add_argument("--linerlib", help="place to read linerlib files", default=None)
     parser.add_argument(
         "--networkDir", help="place to read network rotation files", default=None
@@ -180,8 +167,8 @@ def convert():
             for instance, networkName in instances:
                 data = fetch_linerlib.fetch(instance, dataDir)
                 network = rotations_func(networkName, networkDir)
-                _convert(data, network, args.transhipment, args.out)
+                _convert(data, network, args.out)
         else:
             data = fetch_linerlib.fetch(args.instance, dataDir)
             network = rotations_func(args.network, networkDir)
-            _convert(data, network, args.transhipment, args.out)
+            _convert(data, network, args.out)
