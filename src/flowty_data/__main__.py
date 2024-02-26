@@ -10,8 +10,8 @@ def main():
     argv = sys.argv[1:]
     argv.append("--type")
     # argv.append("mcf")
-    argv.append("rcmcf")
-    # argv.append("vrptw")
+    # argv.append("rcmcf")
+    argv.append("vrptw")
 
     parser = argparse.ArgumentParser(
         description="Converts instance data to Flowty format"

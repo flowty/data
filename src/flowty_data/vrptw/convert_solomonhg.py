@@ -32,11 +32,11 @@ def _convert(instance, dataSet, out, numCustomers=None):
 
 def convert():
     argv = sys.argv[1:]
-    # argv.append("--instance")
-    # argv.append("solomon")
+    argv.append("--instance")
+    argv.append("solomon")
     argv.append("--out")
     argv.append("data/vrptw")
-    argv.append("--all")
+    # argv.append("--all")
 
     parser = argparse.ArgumentParser(description="Converts vrptw data to other format")
     parser.add_argument(
@@ -54,7 +54,7 @@ def convert():
 
     instances = ["solomon", "homberger"]
     downloadDir = "data/vrptw/pucrio"
-    numCustomers = None
+    numCustomers = None #50
     os.makedirs(downloadDir, exist_ok=True)
     if args.all:
         for instance in instances:
@@ -62,4 +62,4 @@ def convert():
             _convert(instance, dataSet, args.out, numCustomers=numCustomers)
     else:
         dataSet = fetch(args.instance, dir=downloadDir, numCustomers=numCustomers)
-        _convert(dataSet, args.out, numCustomers=numCustomers)
+        _convert(args.instance, dataSet, args.out, numCustomers=numCustomers)
