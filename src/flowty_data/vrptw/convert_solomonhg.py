@@ -54,7 +54,7 @@ def convert():
 
     instances = ["solomon", "homberger"]
     downloadDir = "data/vrptw/pucrio"
-    numCustomers = None #50
+    numCustomers = None  # 50
     os.makedirs(downloadDir, exist_ok=True)
     if args.all:
         for instance in instances:

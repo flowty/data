@@ -4,6 +4,7 @@ import os
 
 from flowty_data.fcmcf.fetch_canad import fetch
 
+
 def _convert(dataSet, out):
     for data in dataSet:
         name, n, m, k, E, C, U, F, O, D, B = data
@@ -29,6 +30,7 @@ def _convert(dataSet, out):
         with open(filename, "w") as f:
             f.writelines(lines)
 
+
 def convert():
     argv = sys.argv[1:]
     # argv.append("--instance")
@@ -51,11 +53,12 @@ def convert():
     )
     args = parser.parse_args(argv)
 
-    instances = ["Canad-C",
-                "Canad-C+",
-                "Canad-R",
-                # "Canad-N"
-                ]
+    instances = [
+        "Canad-C",
+        "Canad-C+",
+        "Canad-R",
+        # "Canad-N"
+    ]
     downloadDir = "data/fcmcf/unipi"
     os.makedirs(downloadDir, exist_ok=True)
     if args.all:
