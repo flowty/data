@@ -1,6 +1,5 @@
 import sys
 import argparse
-import enum
 import os
 import tempfile
 import flowty_data.rcmcf.fetch_linerlib as fetch_linerlib

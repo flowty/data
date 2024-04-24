@@ -1,7 +1,6 @@
 import shutil
 import urllib.request
 import zipfile
-import io
 import os
 
 
@@ -10,7 +9,10 @@ def download(username, repoName, outputPath, repoBranch="master"):
     if os.path.exists(filename):
         return
     if not os.path.exists(filename + ".zip"):
-        url = f"https://github.com/{username}/{repoName}/archive/refs/heads/{repoBranch}.zip"
+        url = (
+            f"https://github.com/{username}/{repoName}/archive/refs/heads/{repoBranch}"
+            ".zip"
+        )
         headers = {"Accept": "application/zip"}
         req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req) as response:

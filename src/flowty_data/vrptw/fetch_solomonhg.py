@@ -1,7 +1,6 @@
 import os
 import tempfile
 import math
-from itertools import islice
 import flowty_data.fetch
 
 

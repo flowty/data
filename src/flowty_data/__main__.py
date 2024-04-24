@@ -4,15 +4,17 @@ import argparse
 from flowty_data.fcmcf import convert_canad
 from flowty_data.mcf import convert_planargrid
 from flowty_data.rcmcf import convert_linerlib
+from flowty_data.smptsp import convert_ptask
 from flowty_data.vrptw import convert_solomonhg
 
 
 def main():
     argv = sys.argv[1:]
     argv.append("--type")
-    argv.append("fcmcf")
+    # argv.append("fcmcf")
     # argv.append("mcf")
     # argv.append("rcmcf")
+    argv.append("smptsp")
     # argv.append("vrptw")
 
     parser = argparse.ArgumentParser(
@@ -27,6 +29,8 @@ def main():
         return convert_planargrid.convert()
     if args.type == "rcmcf":
         return convert_linerlib.convert()
+    if args.type == "smptsp":
+        return convert_ptask.convert()
     if args.type == "vrptw":
         return convert_solomonhg.convert()
 

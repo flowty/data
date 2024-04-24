@@ -2,6 +2,7 @@ import os
 import tempfile
 import flowty_data.fetch
 
+
 # From version 1
 def _getInstancename(instance, name):
     end = ".dow"
