@@ -1,0 +1,7 @@
+c Shift Minimisation Personnel Task Scheduling Problem (SMPTSP) 
+c data_118_180_1302_33
+c
+c problem vertices edges commodities
+p smptsp 1302 180
+c
+c origin destination demand
