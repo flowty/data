@@ -48,8 +48,6 @@ def _readAll(dir):
     for filename in os.listdir(downloadDir):
         if filename.endswith(".zip"):
             continue
-        if filename != "data_1_23_40_66.dat":
-            continue
         data.append(_read(filename, dir))
     return data
 

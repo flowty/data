@@ -23,7 +23,7 @@ def _convert(dataSet, out):
             "c shift cost source target num_qualifications qualifications\n",
         ]
         for i, (t, b) in enumerate(zip(T, B)):
-            line = f"c {i} {b} {n*2} {n*2+1} {len(t)}"
+            line = f"k {i} {b} {n*2} {n*2+1} {len(t)}"
             for q in t:
                 line += f" {q}"
             lines += [line + "\n"]

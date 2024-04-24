@@ -35,3 +35,4 @@ data/vrptw/pucrio/Vrp-Set-HG/Vrp-Set-HG/*.txt
 data/vrptw/pucrio/Vrp-Set-HG/Vrp-Set-HG/*.sol
 data/vrptw/pucrio/Vrp-Set-Solomon/*.txt
 data/vrptw/pucrio/Vrp-Set-Solomon/*.sol
+data/smptsp/orlib/*.dat
