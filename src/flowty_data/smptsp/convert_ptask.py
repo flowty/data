@@ -27,21 +27,28 @@ def _convert(dataSet, out):
             for q in t:
                 line += f" {q}"
             lines += [line + "\n"]
-        lines += ["c\n", "c graph source target\n"]
+        lines += ["c\n", "c graph source target is_shift\n"]
         for i in range(m):
             source = n * 2
             target = n * 2 + 1
+            h = target+1
             prev = source
             start = [(j, S[j], True) for j in T[i]]
             finish = [(j, F[j], False) for j in T[i]]
             vertices = sorted(start + finish, key=lambda x: x[1])
             for j, t, isStart in vertices:
-                vid = j if isStart else j + n
-                lines += [f"a {i} {prev} {vid}\n"]
+                vid = j if isStart else j + n                                
+                lines += [f"a {i} {prev} {vid} {0}\n"]
+                isShift = 1
                 if not isStart:
-                    lines += [f"a {i} {j} {vid}\n"]
+                    if j == prev:
+                        lines += [f"a {i} {j} {h} {isShift}\n"]
+                        j = h
+                        h += 1
+                        isShift = 0                                        
+                    lines += [f"a {i} {j} {vid} {isShift}\n"]
                 prev = vid
-            lines += [f"a {i} {prev} {target}\n"]
+            lines += [f"a {i} {prev} {target} {0}\n"]
         filename = os.path.join(out, f"{name}.txt")
         with open(filename, "w") as f:
             f.writelines(lines)
