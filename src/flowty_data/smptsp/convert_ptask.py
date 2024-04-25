@@ -35,7 +35,7 @@ def _convert(dataSet, out):
             prev = source
             start = [(j, S[j], True) for j in T[i]]
             finish = [(j, F[j], False) for j in T[i]]
-            vertices = sorted(start + finish, key=lambda x: x[1])
+            vertices = sorted(start + finish, key=lambda x: (x[1], x[2]))
             for j, t, isStart in vertices:
                 vid = j if isStart else j + n                                
                 lines += [f"a {i} {prev} {vid} {0}\n"]
