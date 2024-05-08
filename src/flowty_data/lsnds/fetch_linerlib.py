@@ -280,7 +280,7 @@ class GraphBuilder:
                     for timePoint in range(0, 7 * 24, timeDisc):
                         fromTimePort = f"{fromPort}_{timePoint}"
                         prev = ("", "", "", 0.0, 0, 0)
-                        for speed in [maxSpeed, designSpeed, minSpeed]:
+                        for speed in [minSpeed, designSpeed, maxSpeed]:
                             time = (
                                 math.ceil(distance / speed / 24 - 0.001 / timeDisc)
                                 * timeDisc
@@ -312,7 +312,7 @@ class GraphBuilder:
                                 capacity,
                                 time,
                             )
-                            if prev != next:
+                            if prev[0] != next[0] or prev[1] != next[1] or prev[2] != next[2] or prev[3] > next[3] or prev[4] > next[4] or prev[5] != next[5] or prev[6] != next[6]:
                                 edges.append(next)
                                 prev = next
         return edges
