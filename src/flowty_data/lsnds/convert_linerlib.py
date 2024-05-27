@@ -28,11 +28,6 @@ def _convert(data, timeDisc: int, out):
     demand = builder.demand
     profit = builder.profit
     # edges
-    E = []
-    costs = []
-    times = []
-    capacities = []
-    ubCapacity = sum(demand)
     numE = len(builder.edges)
     lines = [
         "c liner shipping network design and scheduling\n",

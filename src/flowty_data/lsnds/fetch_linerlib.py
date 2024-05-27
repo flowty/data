@@ -284,14 +284,14 @@ class GraphBuilder:
                             time = (
                                 math.ceil(distance / speed / 24 - 0.001 / timeDisc)
                                 * timeDisc
-                                + 24
+                                + max(24, timeDisc)
                             )
                             costPerFULL = self._ports["CostPerFULL"][
                                 self._portsMap[toPort]
                             ]
                             costPerFULL = costPerFULL if costPerFULL else 0
                             unit_cost = round(
-                                costPerFULL * capacity + self._getFuelCost(v, speed), 2
+                                (costPerFULL + self._getFuelCost(v, speed)) / capacity, 2
                             )
                             fixed_cost = round(
                                 dailyCost * time / 24
