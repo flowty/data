@@ -162,8 +162,8 @@ class GraphBuilder:
             revenue = self._demand["Revenue_1"][k]
             origin = self._demand["Origin"][k]
             destination = self._demand["Destination"][k]
-            originCostPerFFE = self._ports["PortCallCostPerFFE"][self._portsMap[origin]]
-            destinationCostPerFFE = self._ports["PortCallCostPerFFE"][
+            originCostPerFFE = self._ports["CostPerFULL"][self._portsMap[origin]]
+            destinationCostPerFFE = self._ports["CostPerFULL"][
                 self._portsMap[destination]
             ]
             profit.append(revenue - originCostPerFFE - destinationCostPerFFE)
@@ -286,12 +286,12 @@ class GraphBuilder:
                                 * timeDisc
                                 + max(24, timeDisc)
                             )
-                            costPerFULL = self._ports["CostPerFULL"][
+                            portCostPerFFE = self._ports["PortCallCostPerFFE"][
                                 self._portsMap[toPort]
                             ]
-                            costPerFULL = costPerFULL if costPerFULL else 0
+                            portCostPerFFE = portCostPerFFE if portCostPerFFE else 0
                             unit_cost = round(
-                                (costPerFULL + self._getFuelCost(v, speed)) / capacity, 2
+                                (portCostPerFFE + self._getFuelCost(v, speed)) / capacity, 2
                             )
                             fixed_cost = round(
                                 dailyCost * time / 24
