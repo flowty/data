@@ -4,13 +4,14 @@ import gzip
 import io
 import os
 import tempfile
-import flowty_data.lsnds.fetch_linerlib as fetch_linerlib
+import flowty_data.linerlib.fetch_linerlib as fetch_linerlib
+import flowty_data.lsnds.graph_builder as graph_builder
 
 
 def _convert(data, timeDisc: int, out):
-    instanceName, _, _, _, _, _, _ = data
+    instanceName, _, _, _, _, _ = data
     # networkName, _, _, _ = network
-    builder = fetch_linerlib.GraphBuilder(data, timeDisc)
+    builder = graph_builder.GraphBuilder(data, timeDisc)
     scale = 100
     vessels = {name: i for i, name in enumerate(builder.vessels)}
     vessels["_"] = -1

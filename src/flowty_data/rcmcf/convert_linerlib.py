@@ -4,14 +4,16 @@ import gzip
 import io
 import os
 import tempfile
-import flowty_data.rcmcf.fetch_linerlib as fetch_linerlib
+import flowty_data.rcmcf.fetch_rotations as fetch_rotations
 import flowty_data.rcmcf.fetch_flow_first_paper as fetch_flow_first_paper
+import flowty_data.rcmcf.graph_builder as graph_builder
+import flowty_data.linerlib.fetch_linerlib as fetch_linerlib
 
 
 def _convert(data, network, out):
     instanceName, _, _, _, _, _ = data
     networkName, _, _, _ = network
-    builder = fetch_linerlib.GraphBuilder(data, network)
+    builder = graph_builder.GraphBuilder(data, network)
     scale = 100
     vertices = {name: i for i, name in enumerate(builder.vertices)}
     # num
@@ -159,7 +161,7 @@ def convert():
         instances = None
         rotations_func = None
         if "LINERLIB" in networkDir:
-            rotations_func = fetch_linerlib.fetch_rotations
+            rotations_func = fetch_rotations.fetch_rotations
             instances = instancesLinerLib
         elif "flow-first-route-next-heuristic-shipping-network-design" in networkDir:
             rotations_func = fetch_flow_first_paper.fetch_rotations
