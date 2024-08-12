@@ -41,10 +41,7 @@ def convert():
     argv.append("data/vrptw")
     # argv.append("--all")
 
-    parser = argparse.ArgumentParser(description="Converts vrptw data to other format")
-    parser.add_argument(
-        "--type", help="Converts vrptw data to Flowty format", default="mcf"
-    )
+    parser = argparse.ArgumentParser(description="Converts vrptw data to Flowty format")
     parser.add_argument("--instance", help="instance name")
     parser.add_argument("--out", help="place to write files", default=".")
     parser.add_argument(
