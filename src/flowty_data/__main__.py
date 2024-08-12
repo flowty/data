@@ -7,14 +7,16 @@ from flowty_data.mcf import convert_planargrid
 from flowty_data.rcmcf import convert_linerlib as convert_rcmcf_linerlib
 from flowty_data.smptsp import convert_ptask
 from flowty_data.vrptw import convert_solomonhg
+from flowty_data.pdptw import convert_aabbccdd
 
 
 def main():
     argv = sys.argv[1:]
     argv.append("--type")
     # argv.append("fcmcf")
-    argv.append("lsnds")
+    # argv.append("lsnds")
     # argv.append("mcf")
+    argv.append("pdptw")
     # argv.append("rcmcf")
     # argv.append("smptsp")
     # argv.append("vrptw")
@@ -22,7 +24,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Converts instance data to Flowty format"
     )
-    parser.add_argument("--type", help="Converts mcf data to Flowty format")
+    parser.add_argument("--type", help="Converts data to Flowty format")
     args = parser.parse_args(argv)
 
     if args.type == "fcmcf":
@@ -31,6 +33,8 @@ def main():
         return convert_lsnds_linerlib.convert()
     if args.type == "mcf":
         return convert_planargrid.convert()
+    if args.type == "pdptw":
+        return convert_aabbccdd.convert()
     if args.type == "rcmcf":
         return convert_rcmcf_linerlib.convert()
     if args.type == "smptsp":
