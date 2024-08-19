@@ -38,7 +38,7 @@ def _read(filename, dir):
         T = []
         for i in range(2*n+1):
             for j in range(1, 2*n+2):
-                if (i == 0 and j == 2*n+1) or i == j or i == j + n:
+                if (i == 0 and j > n) or i == j or i == j + n:
                     continue
                 value = int(
                     math.sqrt(math.pow(X[i] - X[j], 2) + math.pow(Y[i] - Y[j], 2))
